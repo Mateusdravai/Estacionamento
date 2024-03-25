@@ -1,4 +1,5 @@
-﻿using Estacionamento.Classes.Enum;
+﻿using Estacionamento.Classes;
+using Estacionamento.Classes.Enum;
 
 namespace Estacionamento
 {
@@ -10,7 +11,7 @@ namespace Estacionamento
 
             string? nome;
             TipoVeiculo veiculo;
-            Estacionamento estacionamento = new Estacionamento()
+            EstacionamentoCs estacionamento = new EstacionamentoCs()
             {
                 VagasPequenas = new List<int>(3),
                 VagasGrandes = new List<int>(3),

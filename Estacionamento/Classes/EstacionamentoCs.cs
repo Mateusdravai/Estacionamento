@@ -2,7 +2,7 @@
 
 namespace Estacionamento.Classes
 {
-    public class Estacionamento
+    public class EstacionamentoCs
     {
         public required List<int> VagasPequenas { get; set; }
         public required List<int> VagasMedias { get; set; }
