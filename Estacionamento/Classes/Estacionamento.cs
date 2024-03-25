@@ -1,4 +1,6 @@
-﻿namespace Estacionamento
+﻿using Estacionamento.Classes.Enum;
+
+namespace Estacionamento.Classes
 {
     public class Estacionamento
     {
@@ -10,14 +12,14 @@
         {
 
             int vagasVan = 0;
-            int vagasDisponiveisMoto = (VagasPequenas.Capacity - VagasPequenas.Count) + (VagasGrandes.Capacity + VagasGrandes.Count) + (VagasMedias.Capacity - VagasMedias.Count);
-            int vagasDisponiveisCarro = VagasMedias.Capacity - VagasMedias.Count + (VagasGrandes.Capacity + VagasGrandes.Count);
+            int vagasDisponiveisMoto = VagasPequenas.Capacity - VagasPequenas.Count + VagasGrandes.Capacity + VagasGrandes.Count + (VagasMedias.Capacity - VagasMedias.Count);
+            int vagasDisponiveisCarro = VagasMedias.Capacity - VagasMedias.Count + VagasGrandes.Capacity + VagasGrandes.Count;
             for (int i = 1; i <= VagasMedias.Capacity - VagasMedias.Count; i++)
             {
-                if ((i % 3) == 0)
+                if (i % 3 == 0)
                     vagasVan = vagasVan + 1;
             }
-            int vagasDisponiveisVan = (VagasGrandes.Capacity - VagasGrandes.Count) + vagasVan;
+            int vagasDisponiveisVan = VagasGrandes.Capacity - VagasGrandes.Count + vagasVan;
 
             if (vagasDisponiveisMoto == 0)
             {
@@ -83,7 +85,7 @@
                         VagasGrandes.Add((int)veiculo);
                         Console.WriteLine("Vaga registrada, bem vindo!");
                     }
-                    else if ((VagasMedias.Capacity - VagasMedias.Count) >= 3)
+                    else if (VagasMedias.Capacity - VagasMedias.Count >= 3)
                     {
                         VagasMedias.Add((int)veiculo);
                         VagasMedias.Add((int)veiculo);
@@ -100,20 +102,20 @@
         {
             int vagasTotal, restanteMoto, restanteCarro, restanteVan, vagasVan = 0;
 
-            int vagasDisponiveisMoto = (VagasPequenas.Capacity - VagasPequenas.Count) +
+            int vagasDisponiveisMoto = VagasPequenas.Capacity - VagasPequenas.Count +
                 (VagasGrandes.Capacity - VagasGrandes.Count) +
                 (VagasMedias.Capacity - VagasMedias.Count);
 
-            int vagasDisponiveisCarro = (VagasMedias.Capacity - VagasMedias.Count) +
+            int vagasDisponiveisCarro = VagasMedias.Capacity - VagasMedias.Count +
                 (VagasGrandes.Capacity - VagasGrandes.Count);
 
             for (int i = 1; i <= VagasMedias.Capacity - VagasMedias.Count; i++)
             {
-                if ((i % 3) == 0)
+                if (i % 3 == 0)
                     vagasVan = vagasVan + 1;
             }
 
-            int vagasDisponiveisVan = (VagasGrandes.Capacity - VagasGrandes.Count) + vagasVan;
+            int vagasDisponiveisVan = VagasGrandes.Capacity - VagasGrandes.Count + vagasVan;
 
             vagasTotal = VagasPequenas.Capacity + VagasMedias.Capacity + VagasGrandes.Capacity;
 
@@ -125,7 +127,7 @@
                 VagasGrandes.Where(x => x == (int)TipoVeiculo.Carro).Count();
 
             restanteVan = VagasMedias.Where(x => x == (int)TipoVeiculo.Van).Count() +
-                (VagasGrandes.Where(x => x == (int)TipoVeiculo.Van).Count() / 3);
+                VagasGrandes.Where(x => x == (int)TipoVeiculo.Van).Count() / 3;
 
             Console.WriteLine(@$"Total simples de vagas restantes {vagasTotal}
                 {vagasDisponiveisMoto} vagas restantes para motos

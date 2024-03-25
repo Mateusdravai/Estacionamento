@@ -1,4 +1,6 @@
-﻿namespace Estacionamento
+﻿using Estacionamento.Classes.Enum;
+
+namespace Estacionamento
 {
     internal class Program
     {

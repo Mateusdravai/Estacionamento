@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Estacionamento
+namespace Estacionamento.Classes.Enum
 {
     public enum TipoVeiculo
     {
