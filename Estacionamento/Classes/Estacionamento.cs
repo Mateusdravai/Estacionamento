@@ -10,15 +10,21 @@ namespace Estacionamento.Classes
 
         public bool Disponibilidade()
         {
-
             int vagasVan = 0;
-            int vagasDisponiveisMoto = VagasPequenas.Capacity - VagasPequenas.Count + VagasGrandes.Capacity + VagasGrandes.Count + (VagasMedias.Capacity - VagasMedias.Count);
-            int vagasDisponiveisCarro = VagasMedias.Capacity - VagasMedias.Count + VagasGrandes.Capacity + VagasGrandes.Count;
+
+            int vagasDisponiveisMoto = (VagasPequenas.Capacity - VagasPequenas.Count) 
+                + VagasGrandes.Capacity + VagasGrandes.Count
+                + (VagasMedias.Capacity - VagasMedias.Count);
+
+            int vagasDisponiveisCarro = (VagasMedias.Capacity - VagasMedias.Count)
+                + (VagasGrandes.Capacity - VagasGrandes.Count);
+
             for (int i = 1; i <= VagasMedias.Capacity - VagasMedias.Count; i++)
             {
                 if (i % 3 == 0)
                     vagasVan = vagasVan + 1;
             }
+
             int vagasDisponiveisVan = VagasGrandes.Capacity - VagasGrandes.Count + vagasVan;
 
             if (vagasDisponiveisMoto == 0)
